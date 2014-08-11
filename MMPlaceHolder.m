@@ -18,8 +18,8 @@
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.backgroundColor = [UIColor clearColor];
-//        self.layer.needsDisplayOnBoundsChange = YES;
         self.contentMode = UIViewContentModeRedraw;
+        self.userInteractionEnabled = NO;
         
         self.lineColor = [UIColor whiteColor];
         self.backColor = [UIColor clearColor];
