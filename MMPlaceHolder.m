@@ -24,6 +24,8 @@
         self.lineColor = [UIColor whiteColor];
         self.backColor = [UIColor clearColor];
         self.arrowSize = 3;
+        
+        self.tag = [NSStringFromClass([self class]) hash];
     }
     return self;
 }
@@ -38,7 +40,7 @@
     CGFloat width = rect.size.width;
     CGFloat height = rect.size.height;
     
-    CGFloat fontSize = 8 + (MIN(width,height))/40;
+    CGFloat fontSize = 6 + (MIN(width,height))/30;
     CGFloat lineSize = 1;
     CGFloat arrowSize = self.arrowSize;
     
@@ -135,5 +137,21 @@
     
 #endif
 }
+
+- (MMPlaceHolder *)getPlaceHolder
+{
+    return (MMPlaceHolder*)[self viewWithTag:[NSStringFromClass([MMPlaceHolder class]) hash]];
+}
+
+- (void)hidePlaceHolder
+{
+    MMPlaceHolder *placeHolder = [self getPlaceHolder];
+    
+    if ( placeHolder )
+    {
+        [placeHolder removeFromSuperview];
+    }
+}
+
 
 @end
