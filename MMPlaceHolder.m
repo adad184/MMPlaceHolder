@@ -40,7 +40,7 @@
     CGFloat width = rect.size.width;
     CGFloat height = rect.size.height;
     
-    CGFloat fontSize = 6 + (MIN(width,height))/30;
+    CGFloat fontSize = 4 + (MIN(width,height))/10;
     CGFloat lineSize = 1;
     CGFloat arrowSize = self.arrowSize;
     
