@@ -33,7 +33,7 @@ or you can customize youself.
 Change Log
 ===============
 
-v1.2  now you can change default configuration by [MMPlaceHolderConfig defaultConfig], you can change 
+v1.2  now you can change default configuration by `[MMPlaceHolderConfig defaultConfig]`
 
     [MMPlaceHolderConfig defaultConfig].lineColor = [UIColor whiteColor];
     [MMPlaceHolderConfig defaultConfig].backColor = [UIColor clearColor];
@@ -41,7 +41,7 @@ v1.2  now you can change default configuration by [MMPlaceHolderConfig defaultCo
     [MMPlaceHolderConfig defaultConfig].lineWidth = 1;
 
 
-v1.1  now you can get or remove MMPlaceHolder by 
+v1.1  now you can get or remove `MMPlaceHolder` by 
 
     - (void)hidePlaceHolder;
     - (MMPlaceHolder *)getPlaceHolder;
