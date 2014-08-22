@@ -8,11 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@interface MMPlaceHolderConfig : NSObject
+
++ (MMPlaceHolderConfig*) defaultConfig;
+
+@property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic, strong) UIColor *backColor;
+@property (nonatomic, assign) CGFloat arrowSize;
+@property (nonatomic, assign) CGFloat lineWidth;
+
+@end
+
 @interface MMPlaceHolder : UIView
 
 @property (nonatomic, strong) UIColor *lineColor;
 @property (nonatomic, strong) UIColor *backColor;
 @property (nonatomic, assign) CGFloat arrowSize;
+@property (nonatomic, assign) CGFloat lineWidth;
 
 @end
 
@@ -22,7 +34,8 @@
 - (void)showPlaceHolder;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
-- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize;
+- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize ;
+- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth;
 
 - (void)hidePlaceHolder;
 - (MMPlaceHolder *)getPlaceHolder;

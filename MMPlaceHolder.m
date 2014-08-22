@@ -8,6 +8,46 @@
 
 #import "MMPlaceHolder.h"
 
+@interface  MMPlaceHolderConfig()
+
+@end
+
+@implementation MMPlaceHolderConfig
+
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self) {
+        
+        self.lineColor = [UIColor whiteColor];
+        self.backColor = [UIColor clearColor];
+        self.arrowSize = 3;
+        self.lineWidth = 1;
+    }
+    
+    return self;
+}
+
++ (MMPlaceHolderConfig *)defaultConfig
+{
+    static dispatch_once_t  onceQueue;
+    static MMPlaceHolderConfig *appInstance;
+    
+    dispatch_once(&onceQueue, ^{
+        appInstance = [[MMPlaceHolderConfig alloc] init];
+    });
+    return appInstance;
+}
+
+@end
+
+@interface MMPlaceHolder()
+
+
+@end
+
 @implementation MMPlaceHolder
 
 - (id)initWithFrame:(CGRect)frame
@@ -21,9 +61,10 @@
         self.contentMode = UIViewContentModeRedraw;
         self.userInteractionEnabled = NO;
         
-        self.lineColor = [UIColor whiteColor];
-        self.backColor = [UIColor clearColor];
-        self.arrowSize = 3;
+        self.lineColor = [MMPlaceHolderConfig defaultConfig].lineColor;
+        self.backColor = [MMPlaceHolderConfig defaultConfig].backColor;
+        self.arrowSize = [MMPlaceHolderConfig defaultConfig].arrowSize;
+        self.lineWidth = [MMPlaceHolderConfig defaultConfig].lineWidth;
         
         self.tag = [NSStringFromClass([self class]) hash];
     }
@@ -41,8 +82,8 @@
     CGFloat height = rect.size.height;
     
     CGFloat fontSize = 4 + (MIN(width,height))/10;
-    CGFloat lineSize = 1;
     CGFloat arrowSize = self.arrowSize;
+    CGFloat lineWidth = self.lineWidth;
     
     UIFont *font = [UIFont systemFontOfSize:fontSize];
     
@@ -52,7 +93,7 @@
     CGContextFillRect(ctx, rect);
     
     //strike lines & arrows
-    CGContextSetLineWidth(ctx, lineSize);
+    CGContextSetLineWidth(ctx, lineWidth);
     CGContextSetStrokeColorWithColor(ctx, self.lineColor.CGColor);
     
     CGContextMoveToPoint(ctx, width/2, 0);
@@ -109,20 +150,26 @@
 
 - (void)showPlaceHolder
 {
-    [self showPlaceHolderWithLineColor:[UIColor whiteColor]];
+    [self showPlaceHolderWithLineColor:[MMPlaceHolderConfig defaultConfig].lineColor];
 }
 
 - (void)showPlaceHolderWithLineColor:(UIColor *)lineColor
 {
-    [self showPlaceHolderWithLineColor:lineColor backColor:[UIColor clearColor]];
+    [self showPlaceHolderWithLineColor:lineColor backColor:[MMPlaceHolderConfig defaultConfig].backColor];
 }
 
 - (void)showPlaceHolderWithLineColor:(UIColor *)lineColor backColor:(UIColor *)backColor
 {
-    [self showPlaceHolderWithLineColor:lineColor backColor:backColor arrowSize:5];
+    [self showPlaceHolderWithLineColor:lineColor backColor:backColor arrowSize:[MMPlaceHolderConfig defaultConfig].arrowSize];
 }
 
+
 - (void)showPlaceHolderWithLineColor:(UIColor *)lineColor backColor:(UIColor *)backColor arrowSize:(CGFloat)arrowSize
+{
+    [self showPlaceHolderWithLineColor:lineColor backColor:backColor arrowSize:arrowSize lineWidth:[MMPlaceHolderConfig defaultConfig].lineWidth];
+}
+
+- (void)showPlaceHolderWithLineColor:(UIColor *)lineColor backColor:(UIColor *)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth
 {
     
 #if RELEASE
@@ -132,6 +179,7 @@
     placeHolder.lineColor = lineColor;
     placeHolder.backColor = backColor;
     placeHolder.arrowSize = arrowSize;
+    placeHolder.lineWidth = lineWidth;
     
     [self addSubview:placeHolder];
     
