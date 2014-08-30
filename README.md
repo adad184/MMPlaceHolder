@@ -1,7 +1,9 @@
 MMPlaceHolder
 =============
 
-A drop in solution to show your UIView's size(to accelerate the development speed).
+A drop in solution to set a placeholder or show UIView's size
+
+[中文介绍](http://adad184.com/2014/08/21/2014-08-21-kai-yuan-xiang-mu-mmplaceholder/)
 
 ![demo](https://github.com/adad184/MMPlaceHolder/blob/master/demo.png?raw=true)
 
