@@ -164,7 +164,6 @@
     {
         for ( UIView *v in self.subviews )
         {
-            LLLog(@"----- %d %p %@",maxDepth, v, NSStringFromClass([v class]));
             [v showPlaceHolderWithAllSubviews:maxDepth-1];
         }
     }
