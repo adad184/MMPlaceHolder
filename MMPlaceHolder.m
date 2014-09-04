@@ -160,40 +160,15 @@
 
 - (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth
 {
-    if (maxDepth < 0) {
-        [NSException raise:NSInvalidArgumentException format:@"maxDepth must be >= 0"];
+    if ( maxDepth > 0 )
+    {
+        for ( UIView *v in self.subviews )
+        {
+            LLLog(@"----- %d %p %@",maxDepth, v, NSStringFromClass([v class]));
+            [v showPlaceHolderWithAllSubviews:maxDepth-1];
+        }
     }
     
-    __block BOOL(^testMaxdepth)(UIView *subview) = ^BOOL(UIView* subview) {
-        int currentDepth = 0;
-        UIView *node = subview;
-        while (!([node isEqual:self])) {
-            node = [node superview];
-            if (++currentDepth > maxDepth) return YES;
-        }
-        return NO;
-    };
-    
-    NSArray*(^__block __unsafe_unretained capturedEvaluateAndRecurse)(UIView*);
-    NSArray*(^evaluateAndRecurse)(UIView*);
-    evaluateAndRecurse = ^NSArray*(UIView *view) {
-        NSMutableArray *children = [[NSMutableArray alloc] init];
-        for (UIView *subview in [view subviews]) {
-            if(testMaxdepth(subview)){
-                return children;
-            }else{
-                [children addObject:subview];
-            }
-            
-            [children addObjectsFromArray:capturedEvaluateAndRecurse(subview)];
-        }
-        return children;
-    };
-    capturedEvaluateAndRecurse = evaluateAndRecurse;
-
-    for(UIView *childView in evaluateAndRecurse(self)){
-        [childView showPlaceHolder];
-    }
     [self showPlaceHolder];
 }
 
