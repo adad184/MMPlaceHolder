@@ -204,11 +204,6 @@
 #endif
 }
 
-- (MMPlaceHolder *)getPlaceHolder
-{
-    return (MMPlaceHolder*)[self viewWithTag:[NSStringFromClass([MMPlaceHolder class]) hash]];
-}
-
 - (void)hidePlaceHolder
 {
     MMPlaceHolder *placeHolder = [self getPlaceHolder];
@@ -219,5 +214,20 @@
     }
 }
 
+- (void)hidePlaceHolderWithAllSubviews
+{
+    for ( UIView *v in self.subviews )
+    {
+        [v showPlaceHolderWithAllSubviews];
+    }
+    
+    [self hidePlaceHolder];
+}
+
+
+- (MMPlaceHolder *)getPlaceHolder
+{
+    return (MMPlaceHolder*)[self viewWithTag:[NSStringFromClass([MMPlaceHolder class]) hash]];
+}
 
 @end

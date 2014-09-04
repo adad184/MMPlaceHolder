@@ -40,6 +40,7 @@
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth;
 
 - (void)hidePlaceHolder;
+- (void)hidePlaceHolderWithAllSubviews;
 - (MMPlaceHolder *)getPlaceHolder;
 
 @end
