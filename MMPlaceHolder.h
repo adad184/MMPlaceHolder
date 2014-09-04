@@ -33,6 +33,7 @@
 
 - (void)showPlaceHolder;
 - (void)showPlaceHolderWithAllSubviews;
+- (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize;
