@@ -21,19 +21,47 @@ simply, you only need one line code.
 
 or you can customize youself.
 
-    @interface  UIView(MMPlaceHolder)
+	@interface  UIView(MMPlaceHolder)
 
-        - (void)showPlaceHolder;
-        - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
-        - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
-        - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize;
-        - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth;
+	- (void)showPlaceHolder;
+	- (void)showPlaceHolderWithAllSubviews;
+	- (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth;
+	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
+	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
+	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize;
+	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth;
 
-    @end
+	- (void)hidePlaceHolder;
+	- (void)hidePlaceHolderWithAllSubviews;
+	- 
+	- (MMPlaceHolder *)getPlaceHolder;
+
+	@end
+	
+	
+and you can use the global configuration
+
+	@interface MMPlaceHolderConfig : NSObject
+
+	+ (MMPlaceHolderConfig*) defaultConfig;
+
+	@property (nonatomic, strong) UIColor *lineColor;
+	@property (nonatomic, strong) UIColor *backColor;
+	@property (nonatomic, assign) CGFloat arrowSize;
+	@property (nonatomic, assign) CGFloat lineWidth;
+
+	@end
 
 
 Change Log
 ===============
+
+v1.3  nwo you can add placeholders recursively by
+
+    - (void)showPlaceHolderWithAllSubviews;
+    - (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth;
+    - (void)hidePlaceHolderWithAllSubviews;
+
 
 v1.2  now you can change default configuration by `[MMPlaceHolderConfig defaultConfig]`
 
