@@ -153,6 +153,26 @@
     [self showPlaceHolderWithLineColor:[MMPlaceHolderConfig defaultConfig].lineColor];
 }
 
+- (void)showPlaceHolderWithAllSubviews
+{
+    NSArray*(^__block __unsafe_unretained capturedEvaluateAndRecurse)(UIView*);
+    NSArray*(^evaluateAndRecurse)(UIView*);
+    evaluateAndRecurse = ^NSArray*(UIView *view) {
+        NSMutableArray *children = [[NSMutableArray alloc] init];
+        for (UIView *subview in [view subviews]) {
+            [children addObject:subview];
+            [children addObjectsFromArray:capturedEvaluateAndRecurse(subview)];
+        }
+        return children;
+    };
+    capturedEvaluateAndRecurse = evaluateAndRecurse;
+
+    for(UIView *childView in evaluateAndRecurse(self)){
+        [childView showPlaceHolder];
+    }
+    [self showPlaceHolder];
+}
+
 - (void)showPlaceHolderWithLineColor:(UIColor *)lineColor
 {
     [self showPlaceHolderWithLineColor:lineColor backColor:[MMPlaceHolderConfig defaultConfig].backColor];

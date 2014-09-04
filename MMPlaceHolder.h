@@ -32,6 +32,7 @@
 @interface  UIView(MMPlaceHolder)
 
 - (void)showPlaceHolder;
+- (void)showPlaceHolderWithAllSubviews;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
 - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize;
