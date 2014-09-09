@@ -11,6 +11,24 @@ or you can use it to show the system view's default values
 
 ![show](https://github.com/adad184/MMPlaceHolder/blob/master/show.png?raw=true)
 
+
+Installation
+============
+
+The preferred way of installation is via [CocoaPods](http://cocoapods.org). Just add
+
+```ruby
+pod 'MMPlaceHolder'
+```
+
+and run `pod install`. It will install the most recent version of MMPlaceHolder.
+
+If you would like to use the latest code of MMPlaceHolder use:
+
+```ruby
+pod 'MMPlaceHolder', :head
+```
+
 Usage
 ===============
 
