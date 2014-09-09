@@ -33,44 +33,50 @@ Usage
 ===============
 
 simply, you only need one line code.
-    
-    [yourView showPlaceHolder];
+
+```objc
+[yourView showPlaceHolder];
+```
 
 
 or you can customize youself.
 
-	@interface  UIView(MMPlaceHolder)
+```objc
+@interface  UIView(MMPlaceHolder)
 
-	- (void)showPlaceHolder;
-	- (void)showPlaceHolderWithAllSubviews;
-	- (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth;
-	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
-	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
-	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize;
-	- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth;
+- (void)showPlaceHolder;
+- (void)showPlaceHolderWithAllSubviews;
+- (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth;
+- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
+- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
+- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize;
+- (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth;
 
-	- (void)hidePlaceHolder;
-	- (void)hidePlaceHolderWithAllSubviews;
-	- 
-	- (MMPlaceHolder *)getPlaceHolder;
+- (void)hidePlaceHolder;
+- (void)hidePlaceHolderWithAllSubviews;
+- 
+- (MMPlaceHolder *)getPlaceHolder;
 
-	@end
+@end
+```
 	
 	
 and you can use the global configuration
 
-	@interface MMPlaceHolderConfig : NSObject
+```objc
+@interface MMPlaceHolderConfig : NSObject
 
-	+ (MMPlaceHolderConfig*) defaultConfig;
++ (MMPlaceHolderConfig*) defaultConfig;
 
-	@property (nonatomic, strong) UIColor *lineColor;
-	@property (nonatomic, strong) UIColor *backColor;
-	@property (nonatomic, assign) CGFloat arrowSize;
-	@property (nonatomic, assign) CGFloat lineWidth;
-	
-    @property (nonatomic, assign) BOOL visible;
+@property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic, strong) UIColor *backColor;
+@property (nonatomic, assign) CGFloat arrowSize;
+@property (nonatomic, assign) CGFloat lineWidth;
 
-	@end
+@property (nonatomic, assign) BOOL visible;
+
+@end
+```
 
 
 Changelog
@@ -78,33 +84,46 @@ Changelog
 
 v1.4  add a demo project & now you can config the global visability by
 
+```objc
     [MMPlaceHolderConfig defaultConfig].visible = NO;
+```
     
 
 v1.3  now you can add placeholders recursively by
 
+```objc
     - (void)showPlaceHolderWithAllSubviews;
     - (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth;
     - (void)hidePlaceHolderWithAllSubviews;
+```
 
 
 v1.2  now you can change default configuration by `[MMPlaceHolderConfig defaultConfig]`
 
+```objc
     [MMPlaceHolderConfig defaultConfig].lineColor = [UIColor whiteColor];
     [MMPlaceHolderConfig defaultConfig].backColor = [UIColor clearColor];
     [MMPlaceHolderConfig defaultConfig].arrowSize = 3;
     [MMPlaceHolderConfig defaultConfig].lineWidth = 1;
+```
 
 
 v1.1  now you can get or remove `MMPlaceHolder` by 
 
+```objc
     - (void)hidePlaceHolder;
     - (MMPlaceHolder *)getPlaceHolder;
+```
+
 
 v1.0  you can custom or simply use it by
 
+```objc
     - (void)showPlaceHolder;
     - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor;
     - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor;
     - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize ;
     - (void)showPlaceHolderWithLineColor:(UIColor*)lineColor backColor:(UIColor*)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth;
+```
+
+
