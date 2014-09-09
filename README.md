@@ -53,10 +53,10 @@ and you can use the global configuration
 	@end
 
 
-Change Log
+Changelog
 ===============
 
-v1.3  nwo you can add placeholders recursively by
+v1.3  now you can add placeholders recursively by
 
     - (void)showPlaceHolderWithAllSubviews;
     - (void)showPlaceHolderWithAllSubviews:(NSInteger)maxDepth;
