@@ -25,9 +25,23 @@
         self.backColor = [UIColor clearColor];
         self.arrowSize = 3;
         self.lineWidth = 1;
+        
+        self.visible = YES;
     }
     
     return self;
+}
+
+- (void)setVisible:(BOOL)visible
+{
+    _visible = visible;
+    
+    if ( !visible )
+    {
+        UIResponder<UIApplicationDelegate> *delegate = [UIApplication sharedApplication].delegate;
+        
+        [delegate.window hidePlaceHolderWithAllSubviews];
+    }
 }
 
 + (MMPlaceHolderConfig *)defaultConfig

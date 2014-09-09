@@ -19,6 +19,9 @@
 		ED4C45E619BED94600504A9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4C45CE19BED94600504A9F /* UIKit.framework */; };
 		ED4C45EE19BED94600504A9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED4C45EC19BED94600504A9F /* InfoPlist.strings */; };
 		ED4C45F019BED94600504A9F /* demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4C45EF19BED94600504A9F /* demoTests.m */; };
+		ED4C45FC19BED99600504A9F /* MMPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4C45FB19BED99600504A9F /* MMPlaceHolder.m */; };
+		ED4C45FF19BED9F100504A9F /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4C45FE19BED9F100504A9F /* MMViewController.m */; };
+		ED4C460119BEDAA400504A9F /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4C460019BEDAA400504A9F /* img.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,11 @@
 		ED4C45EB19BED94600504A9F /* demoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "demoTests-Info.plist"; sourceTree = "<group>"; };
 		ED4C45ED19BED94600504A9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ED4C45EF19BED94600504A9F /* demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demoTests.m; sourceTree = "<group>"; };
+		ED4C45FA19BED99600504A9F /* MMPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPlaceHolder.h; sourceTree = "<group>"; };
+		ED4C45FB19BED99600504A9F /* MMPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPlaceHolder.m; sourceTree = "<group>"; };
+		ED4C45FD19BED9F100504A9F /* MMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMViewController.h; sourceTree = "<group>"; };
+		ED4C45FE19BED9F100504A9F /* MMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
+		ED4C460019BEDAA400504A9F /* img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,7 @@
 		ED4C45BE19BED94600504A9F = {
 			isa = PBXGroup;
 			children = (
+				ED4C45F919BED99600504A9F /* MMPlaceHolder */,
 				ED4C45D019BED94600504A9F /* demo */,
 				ED4C45E919BED94600504A9F /* demoTests */,
 				ED4C45C919BED94600504A9F /* Frameworks */,
@@ -107,10 +116,13 @@
 		ED4C45D019BED94600504A9F /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				ED4C460019BEDAA400504A9F /* img.png */,
 				ED4C45D919BED94600504A9F /* AppDelegate.h */,
 				ED4C45DA19BED94600504A9F /* AppDelegate.m */,
 				ED4C45DC19BED94600504A9F /* Images.xcassets */,
 				ED4C45D119BED94600504A9F /* Supporting Files */,
+				ED4C45FD19BED9F100504A9F /* MMViewController.h */,
+				ED4C45FE19BED9F100504A9F /* MMViewController.m */,
 			);
 			path = demo;
 			sourceTree = "<group>";
@@ -142,6 +154,16 @@
 				ED4C45EC19BED94600504A9F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED4C45F919BED99600504A9F /* MMPlaceHolder */ = {
+			isa = PBXGroup;
+			children = (
+				ED4C45FA19BED99600504A9F /* MMPlaceHolder.h */,
+				ED4C45FB19BED99600504A9F /* MMPlaceHolder.m */,
+			);
+			name = MMPlaceHolder;
+			path = ../MMPlaceHolder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4C460119BEDAA400504A9F /* img.png in Resources */,
 				ED4C45D519BED94600504A9F /* InfoPlist.strings in Resources */,
 				ED4C45DD19BED94600504A9F /* Images.xcassets in Resources */,
 			);
@@ -241,6 +264,8 @@
 			files = (
 				ED4C45DB19BED94600504A9F /* AppDelegate.m in Sources */,
 				ED4C45D719BED94600504A9F /* main.m in Sources */,
+				ED4C45FF19BED9F100504A9F /* MMViewController.m in Sources */,
+				ED4C45FC19BED99600504A9F /* MMPlaceHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +462,7 @@
 				ED4C45F519BED94600504A9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED4C45F619BED94600504A9F /* Build configuration list for PBXNativeTarget "demoTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +471,7 @@
 				ED4C45F819BED94600504A9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

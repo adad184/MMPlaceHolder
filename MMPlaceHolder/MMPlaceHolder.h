@@ -17,6 +17,8 @@
 @property (nonatomic, assign) CGFloat arrowSize;
 @property (nonatomic, assign) CGFloat lineWidth;
 
+@property (nonatomic, assign) BOOL visible;
+
 @end
 
 @interface MMPlaceHolder : UIView
