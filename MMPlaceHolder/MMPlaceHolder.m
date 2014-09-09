@@ -207,13 +207,17 @@
 #if RELEASE
     
 #else
-    MMPlaceHolder *placeHolder = [[MMPlaceHolder alloc] initWithFrame:self.bounds];
-    placeHolder.lineColor = lineColor;
-    placeHolder.backColor = backColor;
-    placeHolder.arrowSize = arrowSize;
-    placeHolder.lineWidth = lineWidth;
     
-    [self addSubview:placeHolder];
+    if ( [MMPlaceHolderConfig defaultConfig].visible )
+    {
+        MMPlaceHolder *placeHolder = [[MMPlaceHolder alloc] initWithFrame:self.bounds];
+        placeHolder.lineColor = lineColor;
+        placeHolder.backColor = backColor;
+        placeHolder.arrowSize = arrowSize;
+        placeHolder.lineWidth = lineWidth;
+        
+        [self addSubview:placeHolder];
+    }
     
 #endif
 }

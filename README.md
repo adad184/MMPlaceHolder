@@ -49,12 +49,19 @@ and you can use the global configuration
 	@property (nonatomic, strong) UIColor *backColor;
 	@property (nonatomic, assign) CGFloat arrowSize;
 	@property (nonatomic, assign) CGFloat lineWidth;
+	
+    @property (nonatomic, assign) BOOL visible;
 
 	@end
 
 
 Changelog
 ===============
+
+v1.4  add a demo project & now you can config the global visability by
+
+    [MMPlaceHolderConfig defaultConfig].visible = NO;
+    
 
 v1.3  now you can add placeholders recursively by
 

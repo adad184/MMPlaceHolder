@@ -22,13 +22,14 @@
     [MMPlaceHolderConfig defaultConfig].lineWidth = 1;
     [MMPlaceHolderConfig defaultConfig].arrowSize = 5;
     [MMPlaceHolderConfig defaultConfig].backColor = [UIColor clearColor];
+    
+//    [MMPlaceHolderConfig defaultConfig].visible = NO;
     //---global configuration
     
     MMViewController *v1 = [[MMViewController alloc] init];
     UIViewController *v2 = [[UIViewController alloc] init];
     UIViewController *v3 = [[UIViewController alloc] init];
     UIViewController *v4 = [[UIViewController alloc] init];
-    
     
     v1.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
     v2.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch   tag:0];
