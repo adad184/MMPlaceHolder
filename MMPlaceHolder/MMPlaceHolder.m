@@ -79,8 +79,6 @@
         self.backColor = [MMPlaceHolderConfig defaultConfig].backColor;
         self.arrowSize = [MMPlaceHolderConfig defaultConfig].arrowSize;
         self.lineWidth = [MMPlaceHolderConfig defaultConfig].lineWidth;
-        
-        self.tag = [NSStringFromClass([self class]) hash];
     }
     return self;
 }
@@ -216,6 +214,8 @@
         placeHolder.arrowSize = arrowSize;
         placeHolder.lineWidth = lineWidth;
         
+        placeHolder.tag = [NSStringFromClass([MMPlaceHolder class]) hash]+(NSInteger)self;
+        
         [self addSubview:placeHolder];
     }
     
@@ -245,7 +245,7 @@
 
 - (MMPlaceHolder *)getPlaceHolder
 {
-    return (MMPlaceHolder*)[self viewWithTag:[NSStringFromClass([MMPlaceHolder class]) hash]];
+    return (MMPlaceHolder*)[self viewWithTag:[NSStringFromClass([MMPlaceHolder class]) hash]+(NSInteger)self];
 }
 
 @end
