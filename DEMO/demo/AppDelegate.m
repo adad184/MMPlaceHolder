@@ -17,14 +17,20 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     
-    //---global configuration
+    //using it for size debug
     [MMPlaceHolderConfig defaultConfig].lineColor = [UIColor blackColor];
     [MMPlaceHolderConfig defaultConfig].lineWidth = 1;
     [MMPlaceHolderConfig defaultConfig].arrowSize = 5;
     [MMPlaceHolderConfig defaultConfig].backColor = [UIColor clearColor];
+    [MMPlaceHolderConfig defaultConfig].frameWidth = 0;
     
-//    [MMPlaceHolderConfig defaultConfig].visible = NO;
-    //---global configuration
+    //using it for frame debug
+//    [MMPlaceHolderConfig defaultConfig].autoDisplay = YES;
+//    [MMPlaceHolderConfig defaultConfig].showArrow = NO;
+//    [MMPlaceHolderConfig defaultConfig].showText = NO;
+    
+    //using it to control global visible
+    [MMPlaceHolderConfig defaultConfig].visible = YES;
     
     MMViewController *v1 = [[MMViewController alloc] init];
     UIViewController *v2 = [[UIViewController alloc] init];
