@@ -6,10 +6,10 @@ A drop in solution to set a placeholder or show UIView's size
 [中文介绍](http://adad184.com/2014/08/21/2014-08-21-kai-yuan-xiang-mu-mmplaceholder/)
 
 you can use it for frame debug
-![demo](https://github.com/adad184/MMPlaceHolder/blob/master/2014-08-26-ru-he-kuai-su-de-shan-chu-imessageli-de-xin-xi2.png?raw=true)
+![demo](https://github.com/adad184/MMPlaceHolder/blob/master/screenshot/screenshot1.png?raw=true)
 
 or you can use it for size debug
-![show](https://github.com/adad184/MMPlaceHolder/blob/master/2014-08-26-ru-he-kuai-su-de-shan-chu-imessageli-de-xin-xi3.png?raw=true)
+![show](https://github.com/adad184/MMPlaceHolder/blob/master/screenshot/screenshot2.png?raw=true)
 
 
 Installation
