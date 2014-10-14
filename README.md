@@ -5,11 +5,11 @@ A drop in solution to set a placeholder or show UIView's size
 
 [中文介绍](http://adad184.com/2014/08/21/2014-08-21-kai-yuan-xiang-mu-mmplaceholder/)
 
-![demo](https://github.com/adad184/MMPlaceHolder/blob/master/demo.png?raw=true)
+you can use it for frame debug
+![demo](https://github.com/adad184/MMPlaceHolder/blob/master/2014-08-26-ru-he-kuai-su-de-shan-chu-imessageli-de-xin-xi2.png?raw=true)
 
-or you can use it to show the system view's default values
-
-![show](https://github.com/adad184/MMPlaceHolder/blob/master/show.png?raw=true)
+or you can use it for size debug
+![show](https://github.com/adad184/MMPlaceHolder/blob/master/2014-08-26-ru-he-kuai-su-de-shan-chu-imessageli-de-xin-xi3.png?raw=true)
 
 
 Installation
@@ -81,6 +81,31 @@ and you can use the global configuration
 
 Changelog
 ===============
+v1.6  now you can control the visible of frame & arrow & text by
+
+```objc
+
+	@property (nonatomic, strong) UIColor *frameColor;
+	@property (nonatomic, assign) CGFloat frameWidth;
+
+	[MMPlaceHolderConfig defaultConfig].showArrow = YES;
+	[MMPlaceHolderConfig defaultConfig].showText = YES;
+```
+      and modified the function `hidePlaceHolder` & add new function `removePlaceHolder`
+      
+```objc
+	- (void)removePlaceHolder;
+	- (void)removePlaceHolderWithAllSubviews;
+```
+      most important thing is you can automatic display the placeholder with one line code by
+      
+```objc
+    [MMPlaceHolderConfig defaultConfig].autoDisplay = YES;
+```
+
+
+v1.5  fix hidePlaceHolder bug when subviews shows placeholder
+
 
 v1.4  add a demo project & now you can config the global visability by
 
