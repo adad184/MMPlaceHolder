@@ -45,11 +45,15 @@
 {
     _visible = visible;
     
+    UIResponder<UIApplicationDelegate> *delegate = [UIApplication sharedApplication].delegate;
+    
     if ( !visible )
     {
-        UIResponder<UIApplicationDelegate> *delegate = [UIApplication sharedApplication].delegate;
-        
         [delegate.window hidePlaceHolderWithAllSubviews];
+    }
+    else
+    {
+        [delegate.window showPlaceHolderWithAllSubviews];
     }
 }
 
