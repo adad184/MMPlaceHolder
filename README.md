@@ -90,7 +90,7 @@ and you can use the global configuration
 
 Changelog
 ===============
-v1.6  now you can control the visible of frame & arrow & text by
+v1.6  now you can control the visibility of frame & arrow & text by
 
 ```objc
 
@@ -100,13 +100,13 @@ v1.6  now you can control the visible of frame & arrow & text by
 	[MMPlaceHolderConfig defaultConfig].showArrow = YES;
 	[MMPlaceHolderConfig defaultConfig].showText = YES;
 ```
-      and modified the function `hidePlaceHolder` & add new function `removePlaceHolder`
+and modified the function `hidePlaceHolder` & add new function `removePlaceHolder`
       
 ```objc
 	- (void)removePlaceHolder;
 	- (void)removePlaceHolderWithAllSubviews;
 ```
-      most important thing is you can automatic display the placeholder with one line code by
+most important thing is you can automatic display the placeholder with one line code by
       
 ```objc
     [MMPlaceHolderConfig defaultConfig].autoDisplay = YES;
