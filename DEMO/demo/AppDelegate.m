@@ -71,6 +71,7 @@
     
     [[v1.navigationController.navigationBar valueForKey:@"backgroundView" ] showPlaceHolderWithLineColor:[UIColor blackColor]];
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = tab;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
