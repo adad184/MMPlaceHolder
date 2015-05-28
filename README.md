@@ -85,6 +85,8 @@ and you can use the global configuration
 
 @property (nonatomic, assign) BOOL visible;
 @property (nonatomic, assign) BOOL autoDisplay;
+@property (nonatomic, strong) NSArray *visibleMemberOfClasses;
+@property (nonatomic, strong) NSArray *visibleKindOfClasses;
 
 @end
 ```
@@ -92,6 +94,19 @@ and you can use the global configuration
 
 Changelog
 ===============
+
+v1.7  now you can display the specific class while in Autodisplay mode(thx [pull request](https://github.com/adad184/MMPlaceHolder/pull/3) from [@mrdaios](https://github.com/mrdaios))
+
+```objc
+    
+    @property (nonatomic, strong) NSArray *visibleMemberOfClasses;
+    @property (nonatomic, strong) NSArray *visibleKindOfClasses;
+
+    [MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses = @[UIImageView.class];
+    [MMPlaceHolderConfig defaultConfig].visibleKindOfClasses   = @[UIButton.class];
+
+```
+
 v1.6  now you can control the visibility of frame & arrow & text by
 
 ```objc

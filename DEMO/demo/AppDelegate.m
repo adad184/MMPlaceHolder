@@ -22,9 +22,10 @@
     [MMPlaceHolderConfig defaultConfig].arrowSize = 5;
     [MMPlaceHolderConfig defaultConfig].backColor = [UIColor clearColor];
     [MMPlaceHolderConfig defaultConfig].frameWidth = 0;
+    [MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses = @[UIImageView.class];
     
     //using it for frame debug
-//    [MMPlaceHolderConfig defaultConfig].autoDisplay = YES;
+    [MMPlaceHolderConfig defaultConfig].autoDisplay = YES;
 //    [MMPlaceHolderConfig defaultConfig].showArrow = NO;
 //    [MMPlaceHolderConfig defaultConfig].showText = NO;
     
@@ -53,19 +54,19 @@
     
     v1.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[UIButton buttonWithType:UIButtonTypeContactAdd]];
     
-    [[v1.navigationItem.leftBarButtonItem valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor redColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
-    [[v1.navigationItem.rightBarButtonItem valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor whiteColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+//    [[v1.navigationItem.leftBarButtonItem valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor redColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+//    [[v1.navigationItem.rightBarButtonItem valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor whiteColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
     
-    [[tab.tabBar.items[0] valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor whiteColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
-    [[tab.tabBar.items[1] valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor blueColor]];
-    [[tab.tabBar.items[2] valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor whiteColor] backColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1]];
-    
-    UIView *v = [tab.tabBar.items[3] valueForKey:@"view"];
-    
-    for ( UIView *sv in v.subviews )
-    {
-        [sv showPlaceHolderWithLineColor:[UIColor yellowColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
-    }
+//    [[tab.tabBar.items[0] valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor whiteColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+//    [[tab.tabBar.items[1] valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor blueColor]];
+//    [[tab.tabBar.items[2] valueForKey:@"view"] showPlaceHolderWithLineColor:[UIColor whiteColor] backColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1]];
+//    
+//    UIView *v = [tab.tabBar.items[3] valueForKey:@"view"];
+//    
+//    for ( UIView *sv in v.subviews )
+//    {
+//        [sv showPlaceHolderWithLineColor:[UIColor yellowColor] backColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+//    }
     
     v1.title = @"MMPlaceHolder";
     

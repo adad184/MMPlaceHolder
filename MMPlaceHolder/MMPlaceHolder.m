@@ -35,7 +35,8 @@
         
         self.visible = YES;
         self.autoDisplay = NO;
-        self.visibleViews = [NSMutableArray array];
+        self.visibleKindOfClasses = @[];
+        self.visibleMemberOfClasses = @[];
     }
     
     return self;
@@ -232,18 +233,23 @@
 - (id)init_mm{
     
     self = [self init_mm];
-    [self checkAutoDisplay];
+//    [self checkAutoDisplay];
     return self;
 }
 
 - (void)awakeFromNib_mm{
-    [self checkAutoDisplay];
+//    [self checkAutoDisplay];
 }
 
 - (id)initWithFrame_mm:(CGRect)frame{
     self = [self initWithFrame_mm:frame];
-    [self checkAutoDisplay];
+//    [self checkAutoDisplay];
     return self;
+}
+
+- (void)didMoveToSuperview
+{
+    [self checkAutoDisplay];
 }
 
 - (void)checkAutoDisplay
@@ -252,13 +258,34 @@
     {
         if ( [MMPlaceHolderConfig defaultConfig].autoDisplay )
         {
-            [self showPlaceHolder];
-        }
-        else if ([MMPlaceHolderConfig defaultConfig].visibleViews.count>0)
-        {
-            if([[MMPlaceHolderConfig defaultConfig].visibleViews containsObject:[self class]])
+            if ([MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses.count>0)
+            {
+                for ( Class cls in [MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses )
+                {
+                    if ( [self isMemberOfClass:cls] )
+                    {
+                        [self showPlaceHolder];
+                        
+                        return;
+                    }
+                }
+            }
+            else if ([MMPlaceHolderConfig defaultConfig].visibleKindOfClasses.count>0)
+            {
+                for ( Class cls in [MMPlaceHolderConfig defaultConfig].visibleKindOfClasses )
+                {
+                    if ( [self isKindOfClass:cls] )
+                    {
+                        [self showPlaceHolder];
+                        
+                        return;
+                    }
+                }
+            }
+            else
             {
                 [self showPlaceHolder];
+                
             }
         }
     }
