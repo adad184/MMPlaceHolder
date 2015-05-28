@@ -25,6 +25,7 @@
 
 @property (nonatomic, assign) BOOL visible;
 @property (nonatomic, assign) BOOL autoDisplay;
+@property (nonatomic, strong) NSMutableArray *visibleViews;
 
 @end
 
