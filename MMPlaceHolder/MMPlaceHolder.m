@@ -35,6 +35,7 @@
         
         self.visible = YES;
         self.autoDisplay = NO;
+        self.visibleViews = [NSMutableArray array];
     }
     
     return self;
@@ -252,6 +253,13 @@
         if ( [MMPlaceHolderConfig defaultConfig].autoDisplay )
         {
             [self showPlaceHolder];
+        }
+        else if ([MMPlaceHolderConfig defaultConfig].visibleViews.count>0)
+        {
+            if([[MMPlaceHolderConfig defaultConfig].visibleViews containsObject:[self class]])
+            {
+                [self showPlaceHolder];
+            }
         }
     }
 }
