@@ -268,7 +268,23 @@
     {
         if ( [MMPlaceHolderConfig defaultConfig].autoDisplay )
         {
-            
+            //means self is a system bundle view
+            if ( [NSBundle bundleForClass:[UIView class]] == [NSBundle bundleForClass:[self class]] )
+            {
+                if ( ![MMPlaceHolderConfig defaultConfig].autoDisplaySystemView ) {
+                    
+                    //skip if self is not in the white list
+                    if ( ![[MMPlaceHolderConfig defaultConfig].defaultMemberOfClasses containsObject:self.class] )
+                    {
+                        NSLog(@"YYYY %@",NSStringFromClass(self.class));
+                        return;
+                    }
+                    else
+                    {
+                        NSLog(@"NNNN %@",NSStringFromClass(self.class));
+                    }
+                }
+            }
             
             if ([MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses.count>0)
             {
@@ -292,24 +308,6 @@
                         
                         return;
                     }
-                }
-            }
-            else if ( [NSBundle mainBundle] != [NSBundle bundleForClass:[self class]] )
-            {
-                NSLog(@"YYYY %@",NSStringFromClass(self.class));
-                //means self is a system view
-                if ( ![MMPlaceHolderConfig defaultConfig].autoDisplaySystemView ) {
-                    
-                    for ( Class cls in [MMPlaceHolderConfig defaultConfig].defaultMemberOfClasses )
-                    {
-                        if ( [self isMemberOfClass:cls] )
-                        {
-                            [self showPlaceHolder];
-                            
-                            return;
-                        }
-                    }
-                    return;
                 }
             }
             else
