@@ -25,6 +25,7 @@
 
 @property (nonatomic, assign) BOOL visible;
 @property (nonatomic, assign) BOOL autoDisplay;
+@property (nonatomic, assign) BOOL autoDisplaySystemView;
 @property (nonatomic, strong) NSArray *visibleMemberOfClasses;
 @property (nonatomic, strong) NSArray *visibleKindOfClasses;
 

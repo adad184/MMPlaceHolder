@@ -12,6 +12,8 @@
 
 @interface  MMPlaceHolderConfig()
 
+@property (nonatomic, strong) NSArray *defaultMemberOfClasses;
+
 @end
 
 @implementation MMPlaceHolderConfig
@@ -37,6 +39,14 @@
         self.autoDisplay = NO;
         self.visibleKindOfClasses = @[];
         self.visibleMemberOfClasses = @[];
+        self.defaultMemberOfClasses = @[UIImageView.class,
+                                        UIButton.class,
+                                        UILabel.class,
+                                        UITextField.class,
+                                        UITextView.class,
+                                        UISwitch.class,
+                                        UISlider.class,
+                                        UIPageControl.class];
     }
     
     return self;
@@ -258,6 +268,8 @@
     {
         if ( [MMPlaceHolderConfig defaultConfig].autoDisplay )
         {
+            
+            
             if ([MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses.count>0)
             {
                 for ( Class cls in [MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses )
@@ -280,6 +292,24 @@
                         
                         return;
                     }
+                }
+            }
+            else if ( [NSBundle mainBundle] != [NSBundle bundleForClass:[self class]] )
+            {
+                NSLog(@"YYYY %@",NSStringFromClass(self.class));
+                //means self is a system view
+                if ( ![MMPlaceHolderConfig defaultConfig].autoDisplaySystemView ) {
+                    
+                    for ( Class cls in [MMPlaceHolderConfig defaultConfig].defaultMemberOfClasses )
+                    {
+                        if ( [self isMemberOfClass:cls] )
+                        {
+                            [self showPlaceHolder];
+                            
+                            return;
+                        }
+                    }
+                    return;
                 }
             }
             else
@@ -340,7 +370,7 @@
 
 - (void)showPlaceHolderWithLineColor:(UIColor *)lineColor backColor:(UIColor *)backColor arrowSize:(CGFloat)arrowSize lineWidth:(CGFloat)lineWidth frameWidth:(CGFloat)frameWidth frameColor:(UIColor *)frameColor
 {
-    
+    NSLog(@"%@",NSStringFromClass(self.class));
 #if RELEASE
     
 #else

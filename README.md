@@ -95,6 +95,14 @@ and you can use the global configuration
 Changelog
 ===============
 
+v1.8  now you can hide the system view and keep the interface clean & tidy
+
+```objc
+    
+	@property (nonatomic, assign) BOOL autoDisplaySystemView;
+
+```
+
 v1.7  now you can display the specific class while in Autodisplay mode(thx [pull request](https://github.com/adad184/MMPlaceHolder/pull/3) from [@mrdaios](https://github.com/mrdaios))
 
 ```objc
