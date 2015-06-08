@@ -276,12 +276,7 @@
                     //skip if self is not in the white list
                     if ( ![[MMPlaceHolderConfig defaultConfig].defaultMemberOfClasses containsObject:self.class] )
                     {
-                        NSLog(@"YYYY %@",NSStringFromClass(self.class));
                         return;
-                    }
-                    else
-                    {
-                        NSLog(@"NNNN %@",NSStringFromClass(self.class));
                     }
                 }
             }
