@@ -22,10 +22,11 @@
     [MMPlaceHolderConfig defaultConfig].arrowSize = 5;
     [MMPlaceHolderConfig defaultConfig].backColor = [UIColor clearColor];
     [MMPlaceHolderConfig defaultConfig].frameWidth = 0;
-    [MMPlaceHolderConfig defaultConfig].visibleMemberOfClasses = @[UIImageView.class];
+    [MMPlaceHolderConfig defaultConfig].visibleKindOfClasses = @[UIImageView.class];
     
     //using it for frame debug
     [MMPlaceHolderConfig defaultConfig].autoDisplay = YES;
+//    [MMPlaceHolderConfig defaultConfig].autoDisplaySystemView = YES;
 //    [MMPlaceHolderConfig defaultConfig].showArrow = NO;
 //    [MMPlaceHolderConfig defaultConfig].showText = NO;
     
