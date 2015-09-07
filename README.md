@@ -1,7 +1,8 @@
 MMPlaceHolder
 =============
-[![Total views](https://sourcegraph.com/api/repos/github.com/adad184/MMPlaceHolder/.counters/views.png)](https://sourcegraph.com/github.com/adad184/MMPlaceHolder)
-[![Views in the last 24 hours](https://sourcegraph.com/api/repos/github.com/adad184/MMPlaceHolder/.counters/views-24h.png)](https://sourcegraph.com/github.com/adad184/MMPlaceHolder)
+[![CocoaPods](https://img.shields.io/cocoapods/v/MMPlaceHolder.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/p/MMPlaceHolder.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/l/MMPlaceHolder.svg)]()
 
 A drop in solution to set a placeholder or show UIView's size
 
