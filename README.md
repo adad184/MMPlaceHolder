@@ -6,7 +6,7 @@ MMPlaceHolder
 
 A drop in solution to set a placeholder or show UIView's size
 
-[中文介绍](http://adad184.com/2014/08/21/2014-08-21-kai-yuan-xiang-mu-mmplaceholder/)
+[中文介绍](http://adad184.com/2014/08/21/kai-yuan-xiang-mu-mmplaceholder/)
 
 you can use it for frame debug
 ![demo](https://raw.githubusercontent.com/adad184/MMPlaceHolder/master/Screenshot/screenshot2.PNG)
