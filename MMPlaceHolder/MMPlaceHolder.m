@@ -113,17 +113,6 @@
     return self;
 }
 
-- (void)setFrameColor:(UIColor *)frameColor
-{
-    _frameColor = frameColor;
-    self.layer.borderColor = frameColor.CGColor;
-}
-
-- (void)setFrameWidth:(CGFloat)frameWidth
-{
-    _frameWidth = frameWidth;
-    self.layer.borderWidth = frameWidth;
-}
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -142,35 +131,57 @@
     //fill the back
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(ctx, self.backColor.CGColor);
+    CGContextSetLineJoin(ctx, kCGLineJoinMiter);
+    CGContextSetLineCap(ctx, kCGLineCapRound);
     CGContextFillRect(ctx, rect);
     
+    // strike frame
+    if ( self.frameWidth > 0 )
+    {
+        CGFloat radius = self.frameWidth/2;
+        
+        CGContextSetLineWidth(ctx, self.frameWidth);
+        CGContextSetStrokeColorWithColor(ctx, self.frameColor.CGColor);
+        
+        CGContextMoveToPoint(ctx, radius, radius);
+        CGContextAddLineToPoint(ctx, radius, height - radius);
+        CGContextAddLineToPoint(ctx, width - radius, height - radius);
+        CGContextAddLineToPoint(ctx, width - radius, radius);
+        CGContextAddLineToPoint(ctx, radius, radius);
+        CGContextClosePath(ctx);
+        
+        CGContextStrokePath(ctx);
+    }
+
     if ( self.showArrow )
     {
         //strike lines & arrows
+        CGFloat radius = self.frameWidth/2*3;
+        
         CGContextSetLineWidth(ctx, lineWidth);
         CGContextSetStrokeColorWithColor(ctx, self.lineColor.CGColor);
         
-        CGContextMoveToPoint(ctx, width/2, 0);
-        CGContextAddLineToPoint(ctx, width/2, height);
-        CGContextMoveToPoint(ctx, width/2, 0);
-        CGContextAddLineToPoint(ctx, width/2-arrowSize, arrowSize);
-        CGContextMoveToPoint(ctx, width/2, 0);
-        CGContextAddLineToPoint(ctx, width/2+arrowSize, arrowSize);
-        CGContextMoveToPoint(ctx, width/2, height);
-        CGContextAddLineToPoint(ctx, width/2-arrowSize, height-arrowSize);
-        CGContextMoveToPoint(ctx, width/2, height);
-        CGContextAddLineToPoint(ctx, width/2+arrowSize, height-arrowSize);
+        CGContextMoveToPoint(ctx, width/2, radius);
+        CGContextAddLineToPoint(ctx, width/2, height-radius);
+        CGContextMoveToPoint(ctx, width/2, radius);
+        CGContextAddLineToPoint(ctx, width/2 - arrowSize, arrowSize + radius);
+        CGContextMoveToPoint(ctx, width/2, radius);
+        CGContextAddLineToPoint(ctx, width/2 + arrowSize, arrowSize + radius);
+        CGContextMoveToPoint(ctx, width/2, height-radius);
+        CGContextAddLineToPoint(ctx, width/2 - arrowSize, height - arrowSize - radius);
+        CGContextMoveToPoint(ctx, width/2, height-radius);
+        CGContextAddLineToPoint(ctx, width/2 + arrowSize, height - arrowSize - radius);
         
-        CGContextMoveToPoint(ctx, 0, height/2);
-        CGContextAddLineToPoint(ctx, width, height/2);
-        CGContextMoveToPoint(ctx, 0, height/2);
-        CGContextAddLineToPoint(ctx, arrowSize, height/2-arrowSize);
-        CGContextMoveToPoint(ctx, 0, height/2);
-        CGContextAddLineToPoint(ctx, arrowSize, height/2+arrowSize);
-        CGContextMoveToPoint(ctx, width, height/2);
-        CGContextAddLineToPoint(ctx, width-arrowSize, height/2-arrowSize);
-        CGContextMoveToPoint(ctx, width, height/2);
-        CGContextAddLineToPoint(ctx, width-arrowSize, height/2+arrowSize);
+        CGContextMoveToPoint(ctx, radius, height/2);
+        CGContextAddLineToPoint(ctx, width - radius, height/2);
+        CGContextMoveToPoint(ctx, radius, height/2);
+        CGContextAddLineToPoint(ctx, arrowSize + radius, height/2 - arrowSize);
+        CGContextMoveToPoint(ctx, radius, height/2);
+        CGContextAddLineToPoint(ctx, arrowSize + radius, height/2 + arrowSize);
+        CGContextMoveToPoint(ctx, width - radius, height/2);
+        CGContextAddLineToPoint(ctx, width - arrowSize - radius, height/2 - arrowSize);
+        CGContextMoveToPoint(ctx, width - radius, height/2);
+        CGContextAddLineToPoint(ctx, width - arrowSize - radius, height/2 + arrowSize);
         
         CGContextStrokePath(ctx);
     }
@@ -178,24 +189,27 @@
     if ( self.showText )
     {
         //calculate the text area
-        NSString *strLabel = [NSString stringWithFormat:@"%.0f X %.0f",width, height];
+        NSString *text = [NSString stringWithFormat:@"%.0f X %.0f",width, height];
         
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-        const CGSize labelSize = [strLabel sizeWithFont:font forWidth:CGFLOAT_MAX lineBreakMode:NSLineBreakByClipping];
+        NSDictionary *textFontAttributes = @{
+                                             NSFontAttributeName: font,
+                                             NSForegroundColorAttributeName: self.lineColor
+                                             };
         
-        CGFloat rectWidth = roundf(labelSize.width)+4;
-        CGFloat rectHeight = roundf(labelSize.height)+4;
+        CGSize textSize = [text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading attributes:textFontAttributes context:nil].size;
+        
+        CGFloat rectWidth = ceilf(textSize.width)+4;
+        CGFloat rectHeight = ceilf(textSize.height)+4;
         
         //clear the area behind the textz
-        CGRect strRect = CGRectMake(width/2-rectWidth/2, height/2-rectHeight/2, rectWidth, rectHeight);
-        CGContextClearRect(ctx, strRect);
+        CGRect textRect = CGRectMake(width/2-rectWidth/2, height/2-rectHeight/2, rectWidth, rectHeight);
+        CGContextClearRect(ctx, textRect);
         CGContextSetFillColorWithColor(ctx, self.backColor.CGColor);
-        CGContextFillRect(ctx, strRect);
+        CGContextFillRect(ctx, textRect);
         
         //draw text
         CGContextSetFillColorWithColor(ctx, self.lineColor.CGColor);
-        [strLabel drawInRect:CGRectInset(strRect, 0, 2) withFont:font lineBreakMode:NSLineBreakByTruncatingMiddle alignment:NSTextAlignmentCenter];
-#pragma GCC diagnostic warning "-Wdeprecated-declarations"
+        [text drawInRect:CGRectInset(textRect, 0, 2) withAttributes:textFontAttributes];
     }
 }
 
@@ -204,58 +218,6 @@
 
 
 @implementation UIView(MMPlaceHolder)
-
-+ (void)mm_swizzleSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector {
-    
-    Class class = [self class];
-    
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
-    
-    
-    
-    BOOL didAddMethodInit=class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-    
-    if (didAddMethodInit) {
-        class_addMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-    }else{
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
-}
-
-
-+(void)load{
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-#if RELEASE
-        
-#else
-        [self mm_swizzleSelector:@selector(init) withSelector:@selector(init_mm)];
-        [self mm_swizzleSelector:@selector(awakeFromNib) withSelector:@selector(awakeFromNib_mm)];
-        [self mm_swizzleSelector:@selector(initWithFrame:) withSelector:@selector(initWithFrame_mm:)];
-        
-#endif
-    });
-}
-
-- (id)init_mm{
-    
-    self = [self init_mm];
-//    [self checkAutoDisplay];
-    return self;
-}
-
-- (void)awakeFromNib_mm{
-//    [self checkAutoDisplay];
-}
-
-- (id)initWithFrame_mm:(CGRect)frame{
-    self = [self initWithFrame_mm:frame];
-//    [self checkAutoDisplay];
-    return self;
-}
 
 - (void)didMoveToSuperview
 {
@@ -373,18 +335,18 @@
     if ( !placeHolder )
     {
         placeHolder = [[MMPlaceHolder alloc] initWithFrame:self.bounds];
-        placeHolder.lineColor  = lineColor;
-        placeHolder.backColor  = backColor;
-        placeHolder.arrowSize  = arrowSize;
-        placeHolder.lineWidth  = lineWidth;
-        placeHolder.frameColor = frameColor;
-        placeHolder.frameWidth = frameWidth;
         
         placeHolder.tag = [NSStringFromClass([MMPlaceHolder class]) hash]+(NSInteger)self;
         
         [self addSubview:placeHolder];
     }
     
+    placeHolder.lineColor  = lineColor;
+    placeHolder.backColor  = backColor;
+    placeHolder.arrowSize  = arrowSize;
+    placeHolder.lineWidth  = lineWidth;
+    placeHolder.frameColor = frameColor;
+    placeHolder.frameWidth = frameWidth;
     placeHolder.hidden = ![MMPlaceHolderConfig defaultConfig].visible;
     
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED28B2A41BD4EBCB00AED1CF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED28B2A31BD4EBCB00AED1CF /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		ED4C45CB19BED94600504A9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4C45CA19BED94600504A9F /* Foundation.framework */; };
 		ED4C45CD19BED94600504A9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4C45CC19BED94600504A9F /* CoreGraphics.framework */; };
 		ED4C45CF19BED94600504A9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4C45CE19BED94600504A9F /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED28B2A31BD4EBCB00AED1CF /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		ED4C45C719BED94600504A9F /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4C45CA19BED94600504A9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED4C45CC19BED94600504A9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,6 +87,7 @@
 		ED4C45BE19BED94600504A9F = {
 			isa = PBXGroup;
 			children = (
+				ED28B2A31BD4EBCB00AED1CF /* Launch Screen.storyboard */,
 				ED4C45F919BED99600504A9F /* MMPlaceHolder */,
 				ED4C45D019BED94600504A9F /* demo */,
 				ED4C45E919BED94600504A9F /* demoTests */,
@@ -210,7 +213,7 @@
 		ED4C45BF19BED94600504A9F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = LJC;
 				TargetAttributes = {
 					ED4C45E119BED94600504A9F = {
@@ -243,6 +246,7 @@
 			files = (
 				ED4C460119BEDAA400504A9F /* img.png in Resources */,
 				ED4C45D519BED94600504A9F /* InfoPlist.strings in Resources */,
+				ED28B2A41BD4EBCB00AED1CF /* Launch Screen.storyboard in Resources */,
 				ED4C45DD19BED94600504A9F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +329,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -381,10 +386,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "demo/demo-Prefix.pch";
 				INFOPLIST_FILE = "demo/demo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adad184.mmplaceholder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -394,10 +399,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "demo/demo-Prefix.pch";
 				INFOPLIST_FILE = "demo/demo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adad184.mmplaceholder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -419,6 +424,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "demoTests/demoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adad184.mmplaceholder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -437,6 +443,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "demo/demo-Prefix.pch";
 				INFOPLIST_FILE = "demoTests/demoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adad184.mmplaceholder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
