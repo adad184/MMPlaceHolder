@@ -96,6 +96,8 @@ and you can use the global configuration
 Changelog
 ===============
 
+v1.9  clean & optimize codes, and draw the frame directly 
+
 v1.8  now you can hide the system view and keep the interface clean & tidy
 
 ```objc
